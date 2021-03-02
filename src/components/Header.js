@@ -1,7 +1,19 @@
-function Header() {
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import logo from '../images/logo.svg'
+
+function Header(props) {
+
+  const curentUser = React.useContext(CurrentUserContext);
+
     return (
         <header className="header">
-        <div className="header__logo"></div>
+        <div className="header__logo" src={logo} alt="Картинка логотипа Место" ></div>
+        <div className="header__data">
+          <p className="header__email">{curentUser.email}</p>
+          <Link className="header__link" to={props.link} onClick={props.onClick}>{props.text}</Link>
+        </div>
         </header>
     );
   }

@@ -1,12 +1,16 @@
 import React from 'react';
 import Card from "./Card.js";
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+import Header from './Header.js';
+import Footer from './Footer.js';
 
 function Main(props) {
 
     const curentUser = React.useContext(CurrentUserContext);
     
     return (
+        <>
+        <Header />
         <main className="main">
               <section className="profile">
                   <div className="profile__card">
@@ -29,6 +33,8 @@ function Main(props) {
                   </ul>
               </section>
           </main>
+          <Footer />
+          </>
     );
   }
   

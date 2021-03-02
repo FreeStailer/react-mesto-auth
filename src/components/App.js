@@ -1,8 +1,7 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import '../index.css';
-import Header from './Header.js';
 import Main from './Main.js';
-import Footer from './Footer.js';
 import ImagePopup from './ImagePopup.js';
 import api from '../utils/api.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
@@ -132,26 +131,37 @@ function closeAllPopups() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
         <div className="page__content">
-            <Header />
-            <Main cards={cards} onCardLike={handleCardLike} onDeleteCard={handleDelClick}
-                  onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} 
-                  onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} />
-            <Footer />
+            <Switch>
+                <Route path={'/sign-up'}>
 
-            <EditProfilePopup inputText={currentUser} onUpdateUser={handleUpdateUser} isOpen={isEditProfilePopupOpen} 
-                              onClose={closeAllPopups} 
-                              isLoading={popupLoading} setLoadingStatus={setPopupLoading} />
-            
-            <EditAvatarPopup onUpdateAvatar={handleUpdateAvatar} isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}
-                             isLoading={popupLoading} setLoadingStatus={setPopupLoading} />
-            
-            <AddPlacePopup onAddCard={handleAddPlaceSubmit} isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} 
-                           isLoading={popupLoading} setLoadingStatus={setPopupLoading}/>
-            
-            <DelCardPopup onDeleteCard={handleCardDelete} isOpen={isDelPopupOpen} onClose={closeAllPopups} 
-                          isLoading={popupLoading} setLoadingStatus={setPopupLoading}/>
-            
-            <ImagePopup isOpen={isImagePopupOpen} card={selectedCard} onClose={closeAllPopups}/>
+                </Route>
+
+                <Route path={'/sign-in'}>
+
+                </Route>
+
+                <ProtectedRoute component={Main} path={'/'} cards={cards} onCardLike={handleCardLike} onDeleteCard={handleDelClick}
+                                onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} 
+                                onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick}>
+                
+
+                    <EditProfilePopup inputText={currentUser} onUpdateUser={handleUpdateUser} isOpen={isEditProfilePopupOpen} 
+                                    onClose={closeAllPopups} 
+                                    isLoading={popupLoading} setLoadingStatus={setPopupLoading} />
+                    
+                    <EditAvatarPopup onUpdateAvatar={handleUpdateAvatar} isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}
+                                    isLoading={popupLoading} setLoadingStatus={setPopupLoading} />
+                    
+                    <AddPlacePopup onAddCard={handleAddPlaceSubmit} isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} 
+                                isLoading={popupLoading} setLoadingStatus={setPopupLoading}/>
+                    
+                    <DelCardPopup onDeleteCard={handleCardDelete} isOpen={isDelPopupOpen} onClose={closeAllPopups} 
+                                isLoading={popupLoading} setLoadingStatus={setPopupLoading}/>
+                    
+                    <ImagePopup isOpen={isImagePopupOpen} card={selectedCard} onClose={closeAllPopups}/>
+                </ProtectedRoute>
+                <InfoTooltip />
+            </Switch>
         </div>
     </CurrentUserContext.Provider>
   );
