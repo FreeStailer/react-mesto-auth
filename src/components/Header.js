@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import logo from '../images/logo.svg'
+import logo from '../images/header__logo_big.svg';
 
 function Header(props) {
 
