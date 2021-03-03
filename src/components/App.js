@@ -182,7 +182,7 @@ function handleRegister(registerData) {
 }
 
 function handleLogin(loginData) {
-    auth.logIn(loginData)
+    auth.login(loginData)
     .then((res) => {
         if(res !== null) {
             getInitialData(loginData.email)
