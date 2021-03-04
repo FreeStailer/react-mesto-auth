@@ -38,6 +38,9 @@
 @import url(./blocks/modal/__photo/modal__photo.css);
 @import url(./blocks/modal/__title/modal__title.css);
 @import url(./blocks/modal/__heading/modal__heading.css);
+@import url(./blocks/modal/__image/modal__image.css);
+@import url(./blocks/modal/__image-title/modal__image-title.css);
+@import url(./blocks/modal/__image-content/modal__image-content.css);
 @import url(./blocks/form/form.css);
 @import url(./blocks/form/__input/form__input.css);
 @import url(./blocks/form/__input-error/form__input-error.css);
@@ -48,3 +51,9 @@
 @import url(./blocks/form/__button/_disabled/form__button_disabled.css);
 @import url(./blocks/card/__like-container/card__like-container.css);
 @import url(./blocks/card/__like-data/card__like-data.css);
+@import url(./blocks/login/login.css);
+@import url(./blocks/login/__title/login__title.css);
+@import url(./blocks/login/__form/login__form.css);
+@import url(./blocks/login/__input/login__input.css);
+@import url(./blocks/login/__submit/login__submit.css);
+@import url(./blocks/login/__link/login__link.css);

@@ -21,7 +21,7 @@ function Login(props) {
             password
         })
     }
-//схема есть, надо стили добавить
+    
     return (
         <div className="login">
             <h1 className="login__title">Вход</h1>
@@ -29,7 +29,7 @@ function Login(props) {
                 <input className="login__input" id="email" name="email" type="text" placeholder="Email" 
                        minLength="2" maxLength="40" onChange={handleSetEmail} value={email} required />
                 <input className="login__input" id="password" name="password" type="text" placeholder="Пароль" 
-                       minLength="2" maxLength="200" onChange={handleSetPassword} value={email} required />
+                       minLength="2" maxLength="200" onChange={handleSetPassword} value={password} required />
                 <button className="login__submit" type="submit">Войти</button>
             </form>
         </div>

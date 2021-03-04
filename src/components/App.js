@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect, Switch, Route, useHistory } from 'react-router-dom';
-import '../index.css';
 import Main from './Main.js';
 import ImagePopup from './ImagePopup.js';
 import api from '../utils/api.js';
@@ -46,7 +45,7 @@ React.useEffect(() => {
             console.log('Ошибка в эфекте "валидации" токена',err);
         })
     }
-})
+}, []);
 
 React.useEffect(() => {
     api.getUserData()
@@ -70,14 +69,14 @@ function handleCardLike(card) {
     });
 }
 
-React.useEffect(() => {
-    api.getInitialCards()
-    .then((res) => {
-        setCards(res)
-    }).catch((err) => {
-        console.log('Ошибка в получении карточек', err)
-    })
-}, [])
+// React.useEffect(() => {
+//     api.getInitialCards()
+//     .then((res) => {
+//         setCards(res)
+//     }).catch((err) => {
+//         console.log('Ошибка в получении карточек', err)
+//     })
+// }, [])
 
 const [delCard, setDelCard] = React.useState(null);
 

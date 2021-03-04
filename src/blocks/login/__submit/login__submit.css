@@ -1,0 +1,23 @@
+.login__submit {
+    display: flex;
+    width: 358px;
+    height: 50px;
+    margin: 216px 0 15px;
+    padding: 0;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    font-family: Inter, 'Arial', sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.login__submit:focus {
+    outline: none;
+}
+
+.login__submit:hover {
+    opacity: 0.8;
+}

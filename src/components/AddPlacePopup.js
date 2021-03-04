@@ -21,19 +21,7 @@ function AddPlacePopup(props) {
                          link: link
       });
     }
-    //сдаюсь с разбегу не придумаю пока как очистить :(
-
-    // const placeRef = React.useRef();
-    // const linkRef = React.useRef();
-
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     props.setLoadingStatus(true);
-    //     props.onAddCard({place: placeRef.current.value,
-    //                      link: linkRef.current.value
-    //                     });
-    // }
-
+    
     return(
         <PopupWithForm onSubmit={handleSubmit} isOpen={props.isOpen} onClose={props.onClose} buttonText={props.isLoading ? 'Сохранение...' : 'Добавить'} 
                        popupId="photo-add" title="Новое место" formId="load-cards">
