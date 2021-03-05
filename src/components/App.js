@@ -196,7 +196,7 @@ function handleLogin(loginData) {
 }
 
 const [loggedIn, setLoggedIn] = React.useState(false);
-function handleLogOut() {
+function handleLogout() {
     localStorage.removeItem('token');
     setLoggedIn(false);
     currentUser.email = null;
@@ -223,7 +223,7 @@ function handleLogOut() {
                 <ProtectedRoute component={Main} path={'/'} cards={cards} onCardLike={handleCardLike} onDeleteCard={handleDelClick}
                                 onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} 
                                 onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick}
-                                onLogOut={handleLogOut} isLoggedIn={loggedIn}>
+                                onLogout={handleLogout} isLoggedIn={loggedIn}>
                 
 
                     <EditProfilePopup inputText={currentUser} onUpdateUser={handleUpdateUser} isOpen={isEditProfilePopupOpen} 

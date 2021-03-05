@@ -10,7 +10,8 @@ function Main(props) {
     
     return (
         <>
-        <Header />
+        <Header link={'sign-in'} text={'Выход'} onClick={props.onLogout} />
+        {console.log(props.onLogout)}
         <main className="main">
               <section className="profile">
                   <div className="profile__card">

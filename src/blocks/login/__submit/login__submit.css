@@ -12,6 +12,7 @@
     line-height: 22px;
     font-style: normal;
     font-weight: normal;
+    border-radius: 2px;
 }
 
 .login__submit:focus {
@@ -20,4 +21,5 @@
 
 .login__submit:hover {
     opacity: 0.8;
+    cursor: pointer;
 }

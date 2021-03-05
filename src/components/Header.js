@@ -9,7 +9,7 @@ function Header(props) {
 
     return (
         <header className="header">
-        <div className="header__logo" src={logo} alt="Картинка логотипа Место" ></div>
+        <img className="header__logo" src={logo} alt="Картинка логотипа Место" />
         <div className="header__data">
           <p className="header__email">{curentUser.email}</p>
           <Link className="header__link" to={props.link} onClick={props.onClick}>{props.text}</Link>
