@@ -1,6 +1,8 @@
 # Инстаграмм (Версия 2.123)
 
-[Посмотреть макет на Реакте можно нажав на это предложение](https://freestailer.github.io/mesto-react/)
+[Посмотреть макет на Реакте можно нажав на это предложение](https://freestailer.github.io/react-mesto-auth/)
+
+А так же выложен на хост [freestailer.ru](freestailer.ru)
 
 ## Содержание
 * Редактируемый профиль

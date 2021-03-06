@@ -14,6 +14,7 @@ import Register from './Register.js';
 import InfoTooltip from './InfoTooltip.js';
 import Header from './Header.js';
 import * as auth from '../utils/auth.js';
+import Footer from './Footer.js';
 
 function App() {
 
@@ -243,6 +244,7 @@ function handleLogout() {
                 </ProtectedRoute>
             </Switch>
             <InfoTooltip isSuccess={isRegisterSuccess} isOpen={isInfoToolOpen} onClose={closeAllPopups} />
+            <Footer />
         </div>
     </CurrentUserContext.Provider>
   );

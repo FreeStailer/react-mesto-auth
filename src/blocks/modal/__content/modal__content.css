@@ -10,7 +10,7 @@
 
 @media screen and (max-width: 480px) {
     .modal__content {
-        max-width: 240px;
+        min-width: 240px;
         padding: 30px 20px;
     }
 }

@@ -23,3 +23,10 @@
     opacity: 0.8;
     cursor: pointer;
 }
+
+@media screen and (max-width: 420px) {
+    .login__submit {
+        width: 260px;
+        margin: 216px 30px 15px 30px;
+    }        
+}

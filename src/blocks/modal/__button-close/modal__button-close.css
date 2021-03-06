@@ -21,11 +21,20 @@
     outline: none;
   }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 530px) {
+    .modal__button-close {
+        width: 30px;
+        height: 30px;
+        top: -51px;
+        right: 46%;
+    }
+}
+
+/* @media screen and (max-width: 480px) {
     .modal__button-close {
         width: 30px;
         height: 30px;
         top: -30px;
         right: -30px;
     }
-}
+} */
