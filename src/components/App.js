@@ -25,9 +25,11 @@ const history = useHistory();
 function getInitialData(email) {
     setLoggedIn(true);
     return Promise.all([api.getInitialCards(), api.getUserData()])
-        .then(([resp, response]) => {
-            setUserData({ ...response, email});
-            setCards(resp)
+        .then(([initialCards, userData]) => {
+            setUserData({ ...userData, email});
+            setCards(initialCards)
+        }).catch((err) => {
+            console.log('Ошибка в функции getInitialData',err);
         })
 }
 
@@ -48,15 +50,6 @@ React.useEffect(() => {
     }
 }, []);
 
-React.useEffect(() => {
-    api.getUserData()
-    .then((res) =>{
-        setUserData(res)
-    }).catch((err) =>{
-        console.log('Ошибка в эфекте стейта юзера: ', err)
-    })
-}, [])
-
 const [cards, setCards] = React.useState([]);
 function handleCardLike(card) {
 
@@ -69,15 +62,6 @@ function handleCardLike(card) {
         console.log(err);
     });
 }
-
-// React.useEffect(() => {
-//     api.getInitialCards()
-//     .then((res) => {
-//         setCards(res)
-//     }).catch((err) => {
-//         console.log('Ошибка в получении карточек', err)
-//     })
-// }, [])
 
 const [delCard, setDelCard] = React.useState(null);
 
@@ -190,7 +174,7 @@ function handleLogin(loginData) {
                 console.log('получение емейла handleLogin getInitialdata', err)})
         }
     }).catch((err) =>{
-        console.log('handllogin eror', err);
+        console.log('handlelogin eror', err);
         setIsRegisterSuccess(false);
         setIsInfoToolOpen(true);
     });
@@ -200,7 +184,8 @@ const [loggedIn, setLoggedIn] = React.useState(false);
 function handleLogout() {
     localStorage.removeItem('token');
     setLoggedIn(false);
-    currentUser.email = null;
+    setUserData({name: '', about: '', avatar: '', email: ''});
+    //currentUser.email = null;
 }
 
   return (
@@ -227,7 +212,7 @@ function handleLogout() {
                                 onLogout={handleLogout} isLoggedIn={loggedIn}>
                 
 
-                    <EditProfilePopup inputText={currentUser} onUpdateUser={handleUpdateUser} isOpen={isEditProfilePopupOpen} 
+                    <EditProfilePopup onUpdateUser={handleUpdateUser} isOpen={isEditProfilePopupOpen} 
                                     onClose={closeAllPopups} 
                                     isLoading={popupLoading} setLoadingStatus={setPopupLoading} />
                     

@@ -1,5 +1,15 @@
 export const BASE_URL = 'https://auth.nomoreparties.co';
 
+//тут минус - я не узнаю в каком апи появилась ошибка,
+//если мы вызываем не функцией, то соответственно не передаем параметры и не могу передать уникальный текст ошибки.
+//если подскажете как добавить текста в ошибку буду благодарен
+function _checkResponse(res) {
+    if (res.ok) {
+        return res.json();
+    }
+    return Promise.reject(`Ошибка в авторизации ${res.status}`);
+};
+
 export function register({ email, password }) {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
@@ -9,13 +19,8 @@ export function register({ email, password }) {
         },
         body: JSON.stringify({email, password}),
     })
-    .then((res) => {
-        if(res.ok) {
-            return res.json();
-        }
-        return Promise.reject(`Ошибка в фунции апи регистрации (ауф.жс): ${res.status}`)
-    })
-}
+    .then(_checkResponse); //это не класс и при вызове this не нужно использовать
+};
 
 export const login = ({ email, password }) => fetch(`${BASE_URL}/signin`, {
         method: 'POST',
@@ -25,14 +30,8 @@ export const login = ({ email, password }) => fetch(`${BASE_URL}/signin`, {
         },
         body: JSON.stringify({email, password}),
     })
-    .then((res) => {
-        if(res.ok) {
-            return res.json();
-        }
-        return Promise.reject(`Ошибка в фунции апи логина (ауф.жс): ${res.status}`)
-    })
+    .then(_checkResponse)
     .then((data) => {
-        console.log(data);
         if(data != null) {
             localStorage.setItem('token', data.token);
         }
@@ -47,10 +46,5 @@ export const tokenValid = (token) => fetch(`${BASE_URL}/users/me`, {
         Authorization: `Bearer ${token}`,
     },
 })
-    .then((res) => {
-        if(res.ok) {
-            return res.json();
-        }
-        return Promise.reject(`Ошибка в фунции апи токена (ауф.жс): ${res.status}`);
-    })
+    .then(_checkResponse)
     .then((res) => res);
